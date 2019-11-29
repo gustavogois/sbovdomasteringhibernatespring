@@ -19,7 +19,7 @@ public class Course {
     @Getter
     private Long id;
 
-    String name;
+    private String name;
 
     public Course(String name) {
         this.name = name;
