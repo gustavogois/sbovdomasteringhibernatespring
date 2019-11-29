@@ -16,7 +16,6 @@ public class Course {
 
     @Id
     @GeneratedValue
-    @Getter
     private Long id;
 
     private String name;
