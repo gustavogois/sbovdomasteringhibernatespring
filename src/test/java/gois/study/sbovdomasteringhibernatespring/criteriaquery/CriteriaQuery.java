@@ -67,4 +67,27 @@ public class CriteriaQuery {
         log.info("Typed Query: {}", resultList);
     }
 
+    @Test
+    public void allCoursesWithoutStudents() {
+
+        // Use Criteria Builder to create a Criteria Query returning the expected result object
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        javax.persistence.criteria.CriteriaQuery<Course> cq = cb.createQuery(Course.class);
+
+        // Define roots for tables which are involved in the Query
+        Root<Course> courseRoot = cq.from(Course.class);
+
+        // Define Predicates etc using Criteria Builder
+        //Predicate studentsIsEmpy = cb.isEmpty(courseRoot.get("students"));
+
+        // Add Predicates etc to the Criteria Query
+        //cq.where(studentsIsEmpy);
+
+        // Build the TypedQuery using the entity manager and criteria query
+        TypedQuery<Course> query = em.createQuery(cq.select(courseRoot));
+        List<Course> resultList = query.getResultList();
+
+        log.info("Typed Query: {}", resultList);
+    }
+
 }
